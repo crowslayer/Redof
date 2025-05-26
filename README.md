@@ -1,5 +1,9 @@
 # Redof
-### Routine to download files from the DOF Yucatan, in bulk, directly or via scraping.
+### Routine to download files from the DOF Yucatán, in bulk, directly or via scraping.
+
+## License
+
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
 
 # Requirements.
 - **request**
@@ -16,8 +20,7 @@
 Enter the date range for the logs to be retrieved, and the download path.
 Upon completion, a window will appear with the number of files downloaded.
 
-
-![Pantalla principal](assets/descarga_dof.png)
+![](assets/images/descarga_dof.png "Descarga DOF")
 
 # DOF Reader
 ### Routine for searching for information or files in the official journal publications.
@@ -32,17 +35,18 @@ To search, you must provide the path to the official gazette files in PDF format
 
 The program will display the results.
 
-![Pantalla principal](assets/reader.png)
+![](assets/images/reader.png "Busqueda DOF")
 
 You have the option to export search results to an Excel file.
 Simply right-click on the search and select the appropriate option.
 
-![Pantalla principal](assets/reader_export.png)
+![](assets/images/reader_export.png "Exportar Busqueda")
 
-![Pantalla principal](assets/reader_export2.png)
+![](assets/images/reader_export2.png "Exporta")
 
 ### Export to Excel
-![Pantalla principal](assets/export_xls.png)
+
+![Resultado obtenido](assets/images/export_xls.png "Exportar a Excel")
 
 Enjoy
 @crowslayer
