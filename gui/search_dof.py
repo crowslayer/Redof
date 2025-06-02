@@ -8,11 +8,12 @@ from tkinter import ttk
 from tkinter.filedialog import askdirectory, asksaveasfilename
 from openpyxl import Workbook
 from app.dof_searcher import DofSearcher
+import ttkbootstrap as tb
 
 MENU_REVEAL = 0
 MENU_EXPORT = 1
 
-class SearchDof(tk.Frame):
+class SearchDof(tb.Frame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # application variables
@@ -58,19 +59,19 @@ class SearchDof(tk.Frame):
         self.tree = ttk.Treeview(self, style='info.Treeview')
         self.tree.pack(fill='both', pady=5)
         self.tree['columns'] = ('date', 'num', 'page', 'paragraph', 'path')
-        self.tree.column('#0', width=200)
+        self.tree.column('#0', width=150)
         self.tree.heading('#0', text='Name')
         self.tree.heading('path', text='Path')
 
         self.tree.heading('page', text='Página')
-        self.tree.heading('paragraph', text='Texto Publicación')
+        self.tree.heading('paragraph', text='Extracto')
         self.tree.heading('num', text='Número')
         self.tree.heading('date', text='Fecha')
 
-        self.tree.column('page', width=50, anchor='center')
+        self.tree.column('page', width=80, anchor='center')
         self.tree.column('paragraph', width=400, anchor='w')
-        self.tree.column('num', width=100, anchor='center')
-        self.tree.column('date', width=300, anchor='w')
+        self.tree.column('num', width=120, anchor='center')
+        self.tree.column('date', width=200, anchor='w')
 
         # progress bar
         self.progressbar = ttk.Progressbar(self, orient='horizontal', mode='indeterminate',
@@ -80,14 +81,11 @@ class SearchDof(tk.Frame):
         # right-click menu for treeview
         self.menu = tk.Menu(self, tearoff=False)
         self.menu.add_command(label='Reveal in file manager', command=self.on_doubleclick_tree)
-        self.menu.add_command(label='Export a results to csv', command=self.export_to_csv)
+        self.menu.add_command(label='Exportar resultados a Excel', command=self.export_to_csv)
 
         # event binding
         self.tree.bind('<Double-1>', self.on_doubleclick_tree)
         self.tree.bind('<Button-3>', self.right_click_tree)
-
-        # Añadir label de versión / copyright abajo
-
 
     def on_browse(self):
         """Callback for directory browse"""

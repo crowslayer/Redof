@@ -13,7 +13,7 @@ from app.request_dof import RequestDof
 from gui.console_redirect import ConsoleRedirect
 
 
-class DownloadDof(tk.Frame):
+class DownloadDof(tb.Frame):
     def __init__(self, root, title = ''):
         super().__init__(root)
         self.sv_destination_path = None
@@ -29,7 +29,7 @@ class DownloadDof(tk.Frame):
             'green2': '#002f2a',
             'gold2': '#e6d194'
         }
-        self.pack(expand=True)
+        self.pack(fill='both',expand=True)
         self.build_form()
         self.show_console()
         self.redirect_stdout_stderr()
@@ -41,8 +41,8 @@ class DownloadDof(tk.Frame):
 
     def show_title(self):
         lbl_title = tb.Label(self, text=self.title)
-        lbl_title.config(padding=10, foreground=self.color['gold2'], font=('Verdana', 14, 'bold'))
-        lbl_title.grid(columnspan=4)
+        lbl_title.config(padding=10, foreground=self.color['gold2'], font=('Verdana', 16, 'bold'))
+        lbl_title.grid(column=0, row=0,columnspan=4, pady=10)
 
     def show_input_label(self):
         lbl_begin_date = tb.Label(self, text='Fecha Inicial: ')
@@ -77,10 +77,10 @@ class DownloadDof(tk.Frame):
         ent_path_destination.config(width=50, font=('ARIAL', 12), state='normal', style="SEntry.TEntry")
         ent_path_destination.grid(column=1, row=3, padx=10, pady=5, sticky='nsew')
 
-        tb.Button(self, text='Browse', command=self.get_path_destination).grid(column=2, row=3, sticky="nsw")
+        tb.Button(self, text="Browse", style="info" ,command=self.get_path_destination).grid(column=2, row=3, sticky="w")
 
-        tb.Button(self, text="Download", width=10, command=self.download_dof).grid(column=0, row=4, padx=10, pady=5, sticky='nse')
-        tb.Button(self, text="Quit", width=10 ,command=self.root.destroy).grid(column=2, row=4, padx=10, pady=5, sticky='nsew')
+        tb.Button(self, text="Download", style="success"  ,width=10, command=self.download_dof).grid(column=0, row=4, padx=10, pady=5, sticky='nse')
+        tb.Button(self, text="Quit", width=10 ,command=self.destroy).grid(column=1, row=4, padx=10, pady=5, sticky='nsw')
 
     def show_console(self):
         self.console = tb.ScrolledText(self, wrap='word', height=15, width=80, state='disabled')
